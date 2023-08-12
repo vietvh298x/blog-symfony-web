@@ -1,0 +1,18 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}
+Blog Login
+{% endblock %}
+{% block main %}
+    {% if error %}
+        <div style="color:red">{{ error.messageKey }}</div>
+    {% endif %}
+    <form method="post" action="">
+        Email:
+        <input type="text" name="_username"/><br/>
+        Password:
+        <input type="password" name="_password"/><br/>
+        <input type="submit" value="Login"/>
+    </form>
+{% endblock %}
+

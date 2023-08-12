@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Trash Posts
+{% endblock %}
+
+{% block custom_js %}
+	<script src="{{ asset("js/trash_post.js") }}" defer></script>
+{% endblock %}
+
+{% block main %}
+	<h2>Trash Posts</h2>
+	{% for post in posts %}
+		<div>
+			<h3>{{ post.title }}</h3>
+			<p>
+				Views:
+				{{ post.views }}.
+				Likes:
+				{{ post.likes }}.
+				<a href="{{ path('blog_recover_deleted', {id: post.id}) }}">Recover post</a> - 
+				<a class="delete_link" href="{{ path('blog_deleted_permanently', {id: post.id}) }}">Delete permanently</a>
+			</p>
+		</div>
+	{% endfor %}
+{% endblock %}

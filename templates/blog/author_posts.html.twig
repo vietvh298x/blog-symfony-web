@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Posts by {{ author.userIdentifier }}
+{% endblock %}
+{% block main %}
+	<h2>Posts by {{ author.userIdentifier }}</h2>
+	{% for post in posts %}
+		<div>
+			<h3>{{ post.title }}</h3>
+			<p>
+				Views:
+				{{ post.views }}.
+				<a href="{{ path('blog_view_post', {id: post.id, slug: post.slug}) }}">Read post</a>
+			</p>
+		</div>
+	{% endfor %}
+{% endblock %}

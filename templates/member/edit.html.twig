@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Edit a post
+{% endblock %}
+{% block main %}
+	<h2>Edit a post</h2>
+	{% if (message) %}
+		<p style="color:green;">{{ message }}</p>
+	{% endif %}
+	{{ form(form) }}{% endblock %}
+
+

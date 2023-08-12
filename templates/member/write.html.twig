@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Write a post
+{% endblock %}
+
+{% block custom_js %}
+<script type="text/javascript" src='{{ asset('js/tinymce/tinymce.min.js') }}' referrerpolicy="origin"></script>
+<script type="text/javascript" src='{{ asset('js/add_post.js') }}' defer></script>
+{% endblock %}
+
+{% block main %}
+	<h2>Write a post</h2>
+	{% if (message) %}
+		<p style="color:green;">{{ message }}</p>
+	{% endif %}
+	{{ form(form) }}{% endblock %}
+
+

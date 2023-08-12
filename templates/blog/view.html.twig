@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Blog Post:
+	{{ post.title }}
+{% endblock %}
+{% block custom_js %}
+	<style>
+		.reply {color: green;}
+	</style>
+	<script>
+		let like_post_url = "{{ path('api_like_post', {id : post.id}) }}";
+	</script>
+	<script src="{{ asset("js/blog_view.js") }}" defer></script>
+{% endblock %}
+{% block main %}
+	<h2>{{ post.title }}</h2>
+	<div>{{ post.content | raw }}</div>
+	<p>This post has been viewed {{ post.views }} times</p>
+	<div id="like-container">
+		<br />
+		This post has been liked <span>{{ post.likes }}</span> times
+		<br />
+		<a href="#">Like</a>
+	</div>
+	<h2>Leave a comment</h2>
+	{{ form(comment_form)}}
+	{% for comment in post.comments %}
+		{% if not comment.replyTo %}
+			<p class="comment_reply">
+				At {{ comment.commentTime | date("H:i:s d/m/Y") }},
+				<a href="{{ path('author_posts', {id: comment.user.id }) }}"> {{ comment.user.userIdentifier}} </a>
+				commented: <br />
+				{{ comment.content }} <br />
+				<a  class="show_reply" href="#" comment-id="{{ comment.id }}">Reply</a>
+			<p>
+			{% for reply in comment.replies %}
+				<p class="reply">
+				At {{ reply.commentTime | date("H:i:s d/m/Y") }},
+				<a href="{{ path('author_posts', {id: comment.user.id }) }}"> {{ reply.user.userIdentifier}} </a>
+				replied: <br />
+				{{ reply.content }}
+			<p>
+			{% endfor %}
+		{% endif %}
+	{% endfor %}
+{% endblock %}

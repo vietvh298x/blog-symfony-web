@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+		{% block custom_js %}
+		{% endblock %}
+	</head>
+	<body>
+<header>
+	<a href="{{ path('home') }}">Home</a>-
+	{% if app.user %}   {# check if user is login #}
+		Welcome
+		{{ app.user.userIdentifier }}
+		-
+		<a href="{{ path('blog_manage_posts') }}">My posts</a>
+		-
+		<a href="{{ path('blog_add_post') }}">Add a post</a>
+		-
+		<a href="{{ path('blog_trash_posts') }}">Trash</a>
+		-
+		<a href="{{ path('logout') }}">Logout</a>
+	{% else %}
+		<a href="{{ path('register') }}">Register</a>
+		-
+		<a href="{{ path('login') }}">Login</a>
+	{% endif %}
+
+</header>
+
+		<hr/>
+		{% block main %}{% endblock %}
+		<hr/>
+		<footer>
+			Copyright &copy; 2022
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Manage Posts
+{% endblock %}
+{% block main %}
+	<h2>Manage Posts</h2>
+	{% for post in posts %}
+		<div>
+			<h3>{{ post.title }}</h3>
+			<p>
+				Views: {{ post.views }}.
+				Likes: {{ post.likes }}.
+				<a href="{{ path('blog_view_post', {id: post.id, slug: post.slug }) }}"> View </a> - 
+				<a href="{{ path('blog_edit_post', {id: post.id}) }}">Edit post</a> - 
+				<a href="{{ path('blog_move_post_to_trash', {id: post.id}) }}">Move to Trash</a>
+			</p>
+		</div>
+	{% endfor %}
+{% endblock %}

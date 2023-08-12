@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Blog Home
+{% endblock %}
+{% block main %}
+	<h2>Blog home page</h2>
+	<p>Welcome to the blog!</p>
+{% for post in posts %}
+	<div>
+		<h3>{{ post.title }}</h3>
+		<p>
+			Author: 
+			<a href="{{ path('author_posts', {id: post.author.id}) }}">
+				{{post.author.userIdentifier}}
+			</a>
+			Views:
+			{{ post.views }}.
+			Likes:
+			{{ post.Likes }}.
+			<a href="{{ path('blog_view_post', {id: post.id, slug: post.slug}) }}">Read post</a>
+		</p>
+	</div>
+{% endfor %}
+
+{% endblock %}
+
