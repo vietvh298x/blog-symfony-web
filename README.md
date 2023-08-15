@@ -22,7 +22,7 @@ This website offers a platform for users to create, share, and interact with blo
 2. **List Blog Posts by User:** The website provides a list of blog posts by a specific user.
 3. **Generate Slugs:** Each blog post is assigned a slug to enhance SEO and user-friendliness.
 4. **Author Management:** Authors can manage their blog posts, including editing, moving to trash, and emptying the trash.
-5. **404 Not Found Page:** When accessing a removed blog post, the website shows a custom 404 not found page.
+5. **Show 404 Not Found Page:** When accessing a removed blog post, the website shows a custom 404 not found page.
 
 ### Content Enhancement
 
